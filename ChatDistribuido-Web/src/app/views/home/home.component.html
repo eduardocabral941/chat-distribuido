@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-toolbar color="primary" style="justify-content: center;">
+        <span style="font-size: 24px; font-weight: bold;">Chat Distribuído Anhanguera</span>
+    </mat-toolbar>
+    <div class="messages" style="padding: 10px;">
+        <ng-template ngFor let-message [ngForOf]="messages" let-i="index">
+            <div *ngIf="message.userName == userName" class="message-line me">
+                <div class="message me" style="background-color: #e0f7fa; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+                    <div class="user-name me" style="font-weight: bold;">{{message.userName}}</div>
+                    <div>{{message.text}}</div>
+                </div>
+            </div>
+            <div *ngIf="message.userName != userName" class="message-line other">
+                <div class="message other" style="background-color: #f1f8e9; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+                    <div class="user-name other" style="font-weight: bold;">{{message.userName}}</div>
+                    <div>{{message.text}}</div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="footer" style="padding: 10px; border-top: 1px solid #ccc;">
+        <form class="form" style="display: flex; align-items: center;">
+            <mat-form-field class="input" style="flex: 1; margin-right: 10px;">
+                <mat-label>Escreva sua mensagem</mat-label>
+                <input matInput placeholder="Digite sua mensagem" [formControl]="messageControl">
+            </mat-form-field>
+            <button (click)="sendMessage()" color="primary" mat-mini-fab aria-label="Enviar">
+                <mat-icon>send</mat-icon>
+            </button>
+        </form>
+    </div>
+</div>

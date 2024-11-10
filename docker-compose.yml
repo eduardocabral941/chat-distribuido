@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+
+  frontend:
+    build:
+      context: ./ChatDistribuido-Web
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
